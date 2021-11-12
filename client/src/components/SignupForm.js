@@ -3,6 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { ADD_USER } from '../utils/mutations';
 //import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
 
 const SignupForm = () => {
   // set initial form state
@@ -35,15 +36,15 @@ const SignupForm = () => {
         variables: { ...userFormData }
       });
 
-      const { token, user } = await response.json();
+      // const { token, user } = await response.json();
 
       Auth.login(data.addUser.token);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
-      console.log(user);
+      // console.log(user);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -110,6 +111,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
+      {error && <div>Sign up failed </div>}
     </>
   );
 };
