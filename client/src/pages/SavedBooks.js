@@ -11,10 +11,15 @@ const SavedBooks = () => {
   //const [userData, setUserData] = useState({});
  const { loading, data } = useQuery(GET_ME);
  const [removeBook] = useMutation(REMOVE_BOOK);
- const userData = data?.me || data?.user || {};
+ const userData = data?.me || {};
+
+ console.log(userData);
+
+
 
   // use this to determine if `useEffect()` hook needs to run again
-  //const userDataLength = Object.keys(userData).length;
+  const userDataLength = Object.keys(userData).length;
+  console.log(userDataLength);
 
   // useEffect(() => {
   //   const getUserData = async (userData) => {
@@ -27,9 +32,9 @@ const SavedBooks = () => {
 
   //       const response = await userData;
 
-  //       if (!response.ok) {
-  //         throw new Error('something went wrong!');
-  //       }
+  //       // if (!response.ok) {
+  //       //   throw new Error('something went wrong!');
+  //       // }
 
   //       const user = await response.json();
   //       userData(user);
@@ -86,7 +91,7 @@ const SavedBooks = () => {
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {userData.savedBooks?.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
