@@ -18,8 +18,8 @@ const SavedBooks = () => {
 
 
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-  console.log(userDataLength);
+  // const userDataLength = Object.keys(userData).length;
+  // console.log(userDataLength);
 
   // useEffect(() => {
   //   const getUserData = async (userData) => {
@@ -48,6 +48,7 @@ const SavedBooks = () => {
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
+
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -59,6 +60,7 @@ const SavedBooks = () => {
       await removeBook({
         variables: {bookId}
       });
+
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
@@ -91,7 +93,7 @@ const SavedBooks = () => {
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks?.map((book) => {
+          {userData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
