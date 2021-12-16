@@ -13,7 +13,16 @@ Users can access their saved books and subsequently delete them from their recor
 
 ![image](https://user-images.githubusercontent.com/85508030/141713933-be36ac5c-a83c-47a5-b10d-643f5e30072e.png)
 
+## Technologies Used
+<ul>
+  <li>React</li>
+  <li>Express</li>
+  <li>GraphQL</li>
+  <li>MongoDB</li>
+  <li>JSON Web Token</li>
+</ul>
 
+## Links
 GitHub Repository: https://github.com/jasongrossman/book-search-engine
 
 Heroku Deployed Application: https://floating-falls-40516.herokuapp.com/
